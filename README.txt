@@ -1,28 +1,35 @@
 BattleChess
 
+
 Description
 ----------
 BattleChess is a pilot project to create a Java turn-based chess game using MySql to track user activity.
+
 
 Installation Instructions
 ----------
 TODO: Installation instructions.
     
+
 Game Description
 ----------
 TODO: Information about the game.
+
 
 Game Instructions
 ----------
 TODO: Instructions for playing the game.
 
+
 Controls
 ----------
 TODO: Game controls.
 
+
 System Requirements
 ----------
 Java
+
 
 Licensing
 ----------
