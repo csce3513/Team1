@@ -11,23 +11,31 @@ public class BattleChess extends JFrame {
     private JPanel content = null;
     private JPanel panel = null;
     private JLabel cells[] = new JLabel[64];
-    private JLabel titlescreen = new JLabel();
     
     public BattleChess() {
         super();
         initialize();
     }
     public static void main(String args[]) {
-        new BattleChess().setVisible(true);
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new BattleChess().setVisible(true);
+            }
+        });
     }
     private void initialize() {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setSize(640,640);
         this.setTitle("Battle Chess");
         this.setContentPane(getContentPanel());
+        JLabel titlescreen = new JLabel();
         titlescreen.setIcon(new ImageIcon("./images/titlescreen.jpg"));
+        JButton register = new JButton("OK", new ImageIcon("./images/register.jpg"));
+        JButton login = new JButton("CANCEL", new ImageIcon("./images/login.jpg"));
+        this.setLayout(new BorderLayout());
+        titlescreen.add(register, BorderLayout.SOUTH);
+        titlescreen.add(login, BorderLayout.CENTER);
         this.add(titlescreen);
-        this.pack();
     }
 
     private JPanel getContentPanel() {
