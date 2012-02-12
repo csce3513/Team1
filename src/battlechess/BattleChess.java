@@ -1,82 +1,50 @@
 package battlechess;
+
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.BufferedImage;
-import java.io.*;
-import java.util.*;
-import javax.imageio.ImageIO;
 import javax.swing.*;
-
-public class BattleChess extends JFrame {
-    
-    private JPanel content = new JPanel();;
-    private JPanel title = new JPanel();;
-    private JPanel board = new JPanel();;
-    private JLabel titleScreen = new JLabel(new ImageIcon("./images/titlescreen.jpg"));
-    private JLabel cells[] = new JLabel[64];
-    private JButton registerButton = new JButton("Register"); //new ImageIcon("./images/register.gif")
-    private JButton loginButton = new JButton("Login"); //new ImageIcon("./images/login.gif")
-    private JButton skipButton = new JButton("Skip registration/login");
-        
-    public BattleChess() {
-        super();
-        initialize();
-        
-        // Show titlescreen
-        title.setVisible(true);
-        
-        // these don't work, look into springlayout and cardlayout
-        //content.repaint();
-        //content.updateUI();
-    }
-    public static void main(String args[]) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                new BattleChess().setVisible(true);
-            }
-        });
-    }
-    private void initialize() {
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.setSize(800,600);
-        this.setTitle("Battle Chess");
-        content.setLayout(new BorderLayout());
-        this.setContentPane(content);
-        createTitle();
-        createBoard();
-    }
-    private void createTitle() {
+ 
+public class BattleChess {
+    JPanel pages;
+     
+    public void addOptions(Container pane) {
+        // Create the title screen
+        JPanel title = new JPanel();
         title.setLayout(null);
-        
+
+        JLabel titleScreen = new JLabel(new ImageIcon("./images/titlescreen.jpg"));
         titleScreen.setOpaque(true);
         title.add(titleScreen,-1);
         titleScreen.setBounds(0,0,800,600);
-        
+
+        JButton registerButton = new JButton("Register"); //new ImageIcon("./images/register.gif")
         registerButton.setBounds(180,350,200,25);
         title.add(registerButton,0);
         
+        JButton loginButton = new JButton("Login"); //new ImageIcon("./images/login.gif")
         loginButton.setBounds(420,350,200,25);
         title.add(loginButton,0);
-        
+
+        JButton skipButton = new JButton("Skip registration/login");
         skipButton.setBounds(300,400,200,25);
         skipButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                title.setVisible(false);
-                board.setVisible(true);
+                CardLayout cl = (CardLayout)(pages.getLayout());
+                cl.show(pages, "chessboard");
             }
         });
         title.add(skipButton,0);
-        
-        content.add(title);
-        title.setVisible(false);
-    }
-    private void createBoard() {
+
+        // Create the board
+        JPanel board = new JPanel();
+        JLabel cells[] = new JLabel[64];
         GridLayout grid = new GridLayout();
         grid.setRows(8);
         grid.setHgap(3);
         grid.setVgap(3);
         grid.setColumns(8);
         board.setLayout(grid);
+        board.setSize(640,640);
         
         int rowColor = 0;
         int i = 0;
@@ -91,9 +59,35 @@ public class BattleChess extends JFrame {
                 rowColor++;
                 i++;
             }
-            skipButton.setText(String.valueOf(i));
         }
-        content.add(board);
-        board.setVisible(false);
+        
+        // Create the panel that contains the components
+        pages = new JPanel(new CardLayout());
+        pages.add(title, "titlescreen");
+        pages.add(board, "chessboard");
+         
+        pane.add(pages, BorderLayout.CENTER);
+    }
+     
+    private static void createAndShowGUI() {
+        // Create and set up the window.
+        JFrame frame = new JFrame("BattleChess");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(800,600);
+
+        // Create and set up the content pane.
+        BattleChess game = new BattleChess();
+        game.addOptions(frame.getContentPane());
+
+        //Display the window.
+        frame.setVisible(true);
+    }
+     
+    public static void main(String[] args) {
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                createAndShowGUI();
+            }
+        });
     }
 }
