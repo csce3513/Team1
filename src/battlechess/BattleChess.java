@@ -1,7 +1,9 @@
 package battlechess;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.*;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class BattleChess extends JFrame {
@@ -9,20 +11,25 @@ public class BattleChess extends JFrame {
     private JPanel content = null;
     private JPanel panel = null;
     private JLabel cells[] = new JLabel[64];
+    private JLabel titlescreen = new JLabel();
     
     public BattleChess() {
         super();
         initialize();
-        createBoard();
     }
     public static void main(String args[]) {
         new BattleChess().setVisible(true);
     }
     private void initialize() {
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setSize(640,640);
         this.setTitle("Battle Chess");
         this.setContentPane(getContentPanel());
+        titlescreen.setIcon(new ImageIcon("./images/titlescreen.jpg"));
+        this.add(titlescreen);
+        this.pack();
     }
+
     private JPanel getContentPanel() {
         if (content == null) {
             content = new JPanel();
