@@ -25,17 +25,28 @@ public class BattleChess extends JFrame {
     }
     private void initialize() {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.setSize(640,640);
+        this.setSize(800,600);
         this.setTitle("Battle Chess");
         this.setContentPane(getContentPanel());
-        JLabel titlescreen = new JLabel();
-        titlescreen.setIcon(new ImageIcon("./images/titlescreen.jpg"));
-        JButton register = new JButton("OK", new ImageIcon("./images/register.jpg"));
-        JButton login = new JButton("CANCEL", new ImageIcon("./images/login.jpg"));
-        this.setLayout(new BorderLayout());
-        titlescreen.add(register, BorderLayout.SOUTH);
-        titlescreen.add(login, BorderLayout.CENTER);
-        this.add(titlescreen);
+        this.setLayout(null);
+        
+        JLabel titleScreen = new JLabel(new ImageIcon("./images/titlescreen.jpg"));
+        JButton registerButton = new JButton("Register"); //new ImageIcon("./images/register.gif")
+        JButton loginButton = new JButton("Login"); //new ImageIcon("./images/login.gif")
+        JButton skipButton = new JButton("Skip registration/login");
+        
+        titleScreen.setOpaque(true);
+        this.add(titleScreen,-1);
+        titleScreen.setBounds(0,0,800,600);
+        
+        registerButton.setBounds(180,350,200,25);
+        this.add(registerButton,1);
+        
+        loginButton.setBounds(420,350,200,25);
+        this.add(loginButton,1);
+        
+        skipButton.setBounds(300,400,200,25);
+        this.add(skipButton,1);
     }
 
     private JPanel getContentPanel() {
