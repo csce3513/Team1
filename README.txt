@@ -30,9 +30,11 @@ System Requirements
 ----------
 Java
 
+
 Credits
 ----------
 Title screen background image by Denny Onasta - http://www.flickr.com/photos/denny_onasta/
+
 
 Licensing
 ----------
