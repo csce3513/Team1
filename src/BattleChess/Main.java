@@ -14,6 +14,7 @@ public class Main extends JApplet implements Constants {
 
     public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
+
             public void run() {
                 JFrame frame = new JFrame("BattleChess");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

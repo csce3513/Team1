@@ -6,8 +6,8 @@ import javax.swing.*;
 import javax.swing.event.*;
 
 public class Game extends JPanel implements Constants, ActionListener {
-    
-    Game(){
+
+    Game() {
         super(new CardLayout());
         add(createTitle(), backButton);
         add(createRegistration(), registerButton);
@@ -16,92 +16,39 @@ public class Game extends JPanel implements Constants, ActionListener {
         add(createCredits(), creditsButton);
         add(createRankings(), rankButton);
     }
-    
-    public void actionPerformed(ActionEvent e){
-        CardLayout cl = (CardLayout)(this.getLayout());
+
+    public void actionPerformed(ActionEvent e) {
+        CardLayout cl = (CardLayout) (this.getLayout());
         cl.show(this, ((JButton) e.getSource()).getText());
     }
-    
-    public JPanel createTitle() {
-        // Create the title screenSize
-        JPanel panel = new JPanel();
-        panel.setLayout(null);
-        JLabel bg = new JLabel(new ImageIcon(imageFolder +"screen_title.jpg"));
-        bg.setOpaque(true);
-        bg.setBounds(0,0,screenSize[0],screenSize[1]);
-        panel.add(bg,-1);
 
-        JButton registerBtn = new JButton(registerButton);
-        registerBtn.setBounds(180,350,200,20);
-        registerBtn.addActionListener(this);
-        panel.add(registerBtn,0);
-        
-        JButton loginBtn = new JButton(loginButton);
-        loginBtn.setBounds(420,350,200,20);
-        loginBtn.addActionListener(this);
-        panel.add(loginBtn,0);
+    private JPanel createTitle() {
+        // Create the title screenSiz
+        JPanel panel = getPanel(imageFolder + titleBG, false);
+        panel.add(getButton(registerButton, 180, 350, 200, 20), 0);
+        panel.add(getButton(loginButton, 420, 350, 200, 20), 0);
+        panel.add(getButton(skipButton, 300, 400, 200, 20), 0);
+        panel.add(getButton(creditsButton, 5, 575, 100, 20), 0);
+        panel.add(getButton(rankButton, 695, 575, 100, 20), 0);
+        return panel;
+    }
 
-        JButton skipBtn = new JButton(skipButton);
-        skipBtn.setBounds(300,400,200,20);
-        skipBtn.addActionListener(this);
-        panel.add(skipBtn,0);
-        
-        JButton creditsBtn = new JButton(creditsButton);
-        creditsBtn.setBounds(5,575,100,20);
-        creditsBtn.addActionListener(this);
-        panel.add(creditsBtn,0);
-        
-        JButton rankBtn = new JButton(rankButton);
-        rankBtn.setBounds(695,575,100,20);
-        rankBtn.addActionListener(this);
-        panel.add(rankBtn,0);
-        
+    private JPanel createRegistration() {
+        // Create the registration screen
+        JPanel panel = getPanel(imageFolder + registrationBG);
         return panel;
     }
-    
-    public JPanel createRegistration() {
-        // Create the registration screenSize
-        JPanel panel = new JPanel();
-        panel.setLayout(null);
-        JLabel bg = new JLabel(new ImageIcon(imageFolder +"screen_registration.jpg"));
-        bg.setOpaque(true);
-        bg.setBounds(0,0,screenSize[0],screenSize[1]);
-        panel.add(bg,-1);
-        JButton back = new JButton("<");
-        back.setBounds(5,5,50,20);
-        back.addActionListener(this);
-        panel.add(back,0);
+
+    private JPanel createLogin() {
+        // Create the login screen
+        JPanel panel = getPanel(imageFolder + loginBG);
         return panel;
     }
-    
-    public JPanel createLogin(){
-        // Create the login screenSize
-        JPanel panel = new JPanel();
-        panel.setLayout(null);
-        JLabel bg = new JLabel(new ImageIcon(imageFolder +"screen_login.jpg"));
-        bg.setOpaque(true);
-        bg.setBounds(0,0,screenSize[0],screenSize[1]);
-        panel.add(bg,-1);
-        JButton back = new JButton("<");
-        back.setBounds(5,5,50,20);
-        back.addActionListener(this);
-        panel.add(back,0);
-        return panel;
-    }
-    
-    public JPanel createBoard(){
+
+    private JPanel createBoard() {
         // Create the board
-        JPanel panel = new JPanel();
-        panel.setLayout(null);
-        JLabel bg = new JLabel(new ImageIcon(imageFolder +"screen_board.jpg"));
-        bg.setOpaque(true);
-        bg.setBounds(0,0,screenSize[0],screenSize[1]);
-        panel.add(bg,-1);
-        JButton back = new JButton("<");
-        back.setBounds(5,5,50,20);
-        back.addActionListener(this);
-        panel.add(back,0);
-        
+        JPanel panel = getPanel(imageFolder + boardBG);
+
         JPanel board = new JPanel();
         JLabel square[] = new JLabel[64];
         GridLayout grid = new GridLayout();
@@ -111,12 +58,12 @@ public class Game extends JPanel implements Constants, ActionListener {
         grid.setColumns(8);
         board.setOpaque(false);
         board.setLayout(grid);
-        board.setBounds(150,50,498,498);
-        panel.add(board,0);
-        
+        board.setBounds(150, 50, 498, 498);
+        panel.add(board, 0);
+
         int i = 0;
-        for (int x=0; x<=7; x++) {
-            for (int y=0; y<=7; y++) {
+        for (int x = 0; x <= 7; x++) {
+            for (int y = 0; y <= 7; y++) {
                 square[i] = new JLabel("", JLabel.CENTER);
                 square[i].setOpaque(false); // add the cells but make them transparent
                 board.add(square[i]);
@@ -125,34 +72,53 @@ public class Game extends JPanel implements Constants, ActionListener {
         }
         return panel;
     }
-    
-    public JPanel createCredits() {
-        // Create the credits screenSize
-        JPanel panel = new JPanel();
-        panel.setLayout(null);
-        JLabel bg = new JLabel(new ImageIcon(imageFolder +"screen_credits.jpg"));
-        bg.setOpaque(true);
-        bg.setBounds(0,0,screenSize[0],screenSize[1]);
-        panel.add(bg,-1);
-        JButton back = new JButton("<");
-        back.setBounds(5,5,50,20);
-        back.addActionListener(this);
-        panel.add(back,0);
+
+    private JPanel createCredits() {
+        // Create the credits screen
+        JPanel panel = getPanel(imageFolder + creditsBG);
         return panel;
     }
-    
-    public JPanel createRankings(){
-        // Create the rank screenSize
+
+    private JPanel createRankings() {
+        // Create the rank screen
+        JPanel panel = getPanel(imageFolder + rankBG);
+        return panel;
+    }
+
+    private JPanel getPanel(String bg) {
+        return getPanel(bg, true);
+    }
+
+    private JPanel getPanel(String bg, Boolean hasBack) {
         JPanel panel = new JPanel();
         panel.setLayout(null);
-        JLabel bg = new JLabel(new ImageIcon(imageFolder +"screen_rankings.jpg"));
-        bg.setOpaque(true);
-        bg.setBounds(0,0,screenSize[0],screenSize[1]);
-        panel.add(bg,-1);
-        JButton back = new JButton("<");
-        back.setBounds(5,5,50,20);
-        back.addActionListener(this);
-        panel.add(back,0);
+        if (!bg.isEmpty()) {
+            panel.add(getBG(bg), -1);
+        }
+        if (hasBack) {
+            panel.add(getBackButton(), 0);
+        }
         return panel;
+    }
+
+    private JLabel getBG(String imageFile) {
+        JLabel bg = new JLabel(new ImageIcon(imageFile));
+        bg.setOpaque(true);
+        bg.setBounds(0, 0, screenSize[0], screenSize[1]);
+        return bg;
+    }
+
+    private JButton getButton(String title, int x, int y, int width, int height) {
+        JButton button = new JButton(title);
+        button.setBounds(x, y, width, height);
+        button.addActionListener(this);
+        return button;
+    }
+
+    private JButton getBackButton() {
+        JButton back = new JButton(backButton);
+        back.setBounds(5, 5, 50, 20);
+        back.addActionListener(this);
+        return back;
     }
 }
