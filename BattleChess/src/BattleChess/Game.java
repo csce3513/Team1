@@ -152,6 +152,18 @@ public class Game extends JPanel implements Constants, ActionListener {
     private JPanel createRankings() {
         // Create the rank screen
         JPanel panel = getPanel(imageFolder + rankBG);
+        
+        Ranking r = new Ranking();
+        panel.add(r.Ranking(2, 4));
+        
+        //DbAccess dao = new DbAccess() {};
+		//try {
+        //    dao.readDataBase();
+       // }
+        //catch(Exception e){
+            // oops
+        //}
+        
         return panel;
     }
 

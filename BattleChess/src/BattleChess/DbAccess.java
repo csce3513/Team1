@@ -1,16 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package Ranking;
-
-/**
- *
- * @author Joshua King
- */
+package BattleChess;
 
 import java.sql.*;
-public abstract class DbAccess extends Ranking 
+
+public class DbAccess extends Ranking 
 {
 	private Connection connect = null;
 	private Statement statement = null;
