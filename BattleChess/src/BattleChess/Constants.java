@@ -21,4 +21,10 @@ interface Constants {
     String creditsButton = "Credits";
     String rankButton = "Rankings";
     String backButton = "<";
+    
+    String pieces[][] = new String[8][8];
+        
+    int hi = -1;
+    int hx = -1;
+    int hy = -1;
 }
