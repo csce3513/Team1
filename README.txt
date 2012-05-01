@@ -9,8 +9,9 @@ BattleChess is a pilot project to create a Java turn-based chess game.
 Installation Instructions
 ----------
 1: In upper left corner of "CSCE3513/Team1" directory, click "ZIP" button to download directory as .zip file.
-2: 
-
+2: Once .zip file is downloaded, extract entire project folder anywhere.
+3: Browse folder to "BattleChess\build\" directory.
+4: Double click on "BattleChess.html" to open game in default web browser.
 
 Game Instructions
 ----------
