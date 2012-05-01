@@ -8,7 +8,7 @@ BattleChess is a pilot project to create a Java turn-based chess game.
 
 Installation Instructions
 ----------
-TODO: Installation instructions.
+1: In upper left corner of "CSCE3513/Team1" directory, click 
 
 
 Game Instructions
