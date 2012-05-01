@@ -13,13 +13,18 @@ TODO: Installation instructions.
 
 Game Instructions
 ----------
-Alternating turns between the players: white first, then black.
+Standard chess game with alternating turns between the players: white first, then black.
 
 
 Controls
 ----------
 Click on a piece once to select it. Then click on the square you would like to move to or take a piece from. Clicking on the "New Game" button at any time will start a new game.
 
+
+Known bugs
+----------
+Checkmate can happen, but there is no function that calculates checkmate or message that says that you have actually put a player into 'checkmate' due to time restrictions and the complicated algorithms to do so.
+If it is the first move for a pawn, the pawn will jump over a piece that is one-square direclty in front of that pawn. IE: white pawn is directly in front of un-moved black pawn. Black pawn's first move can jump over white pawn.
 
 System Requirements
 ----------
