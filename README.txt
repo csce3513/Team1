@@ -1,10 +1,10 @@
 BattleChess
 
 
+
 Description
 ----------
 BattleChess is a pilot project to create a Java turn-based chess game.
-
 
 Installation Instructions
 ----------
