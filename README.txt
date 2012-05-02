@@ -12,7 +12,7 @@ BattleChess is a pilot project to create a Java turn-based chess game.
 1: Download .zip file here: http://dl.dropbox.com/u/7301352/chess-2012-05-02.zip .
 2: Extract contents anywhere on local machine.
 3: Browse extracted contents to "chess\build\".
-4: Open "battlechess.html" to open game in default web browser. Be sure that java is enabled.
+4: Double click "battlechess.html" to open game in default web browser. Be sure that java is enabled.
 
 
 Game Instructions
